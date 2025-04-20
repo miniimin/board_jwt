@@ -1,0 +1,58 @@
+/* 기본 body 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 컨테이너 스타일 */
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* 제목 스타일 */
+.title {
+    color: #2c3e50;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+/* 링크 버튼 스타일 */
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 버튼 공통 스타일 */
+.btn {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+/* 버튼 호버 효과 */
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* 버튼을 클릭했을 때 효과 */
+.btn:active {
+    background-color: #1f6a96;
+}

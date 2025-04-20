@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+    <link rel="stylesheet" href="/css/articleWriteStyle.css">
+</head>
+<body>
+<div class="container">
+    <h2>글쓰기</h2>
+    <form id="articleForm">
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="content">내용:</label>
+        <textarea id="content" name="content" required></textarea><br><br>
+
+        <button type="submit">제출</button>
+    </form>
+</div>
+<script src="/js/auth.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", async function () {
+        const articleId = window.location.pathname.split("/").pop();
+
+        const isEdit = !isNaN(articleId);
+        const method = isEdit ? "PUT" : "POST";
+        const url = isEdit ? `/api/articles/${articleId}` : "/api/articles";
+
+        if (isEdit) {
+            try {
+                const response = await fetchWithAuth(`/api/articles/${articleId}`);
+                const article = await response.json();
+                document.getElementById("title").value = article.title;
+                document.getElementById("content").value = article.content;
+            } catch (error) {
+                console.error("Error:", error);
+                alert('글을 불러오는 데 실패했습니다.');
+            }
+        }
+
+        document.getElementById("articleForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const title = document.getElementById("title").value;
+            const content = document.getElementById("content").value;
+
+            try {
+                const response = await fetchWithAuth(url, {
+                    method: method,
+                    body: JSON.stringify({ title: title, content: content }),
+                    headers: { "Content-Type": "application/json" } // headers 추가
+                });
+
+                if (!response.ok) {
+                    throw new Error("요청을 처리하는 데 실패했습니다.");
+                }
+
+                const data = await response.json();
+                window.location.href = `/read-article/${data.id}`;
+            } catch (error) {
+                alert('실패: ' + error.message);
+            }
+        });
+    });
+</script>
+</body>
+</html>

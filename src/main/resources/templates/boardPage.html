@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>글 목록</title>
+    <link rel="stylesheet" href="/css/boardStyle.css">
+</head>
+<body>
+<div class="container">
+    <h1>글 목록</h1>
+    <table>
+        <thead>
+        <tr>
+            <th style="width: 60%;">제목</th>
+            <th style="width: 20%;">작성자</th>
+            <th style="width: 20%;">작성일</th>
+        </tr>
+        </thead>
+        <tbody id="articleList">
+        </tbody>
+    </table>
+
+    <form id="searchForm">
+        <label for="range">검색 범위:</label>
+        <select name="range" id="range">
+            <option value="all">전체</option>
+            <option value="title">제목</option>
+            <option value="content">내용</option>
+            <option value="author">글쓴이</option>
+        </select>
+
+        <label for="query">검색어:</label>
+        <input type="text" id="query" name="query">
+        <button type="submit">검색</button>
+    </form>
+
+    <a href="/write-article">
+        <button>글쓰기</button>
+    </a>
+    <button id="logoutBtn">로그아웃</button>
+</div>
+<script src="/js/auth.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", async function() {
+
+        const response = await fetchWithAuth("/api/articles");
+
+        const articles = await response.json();
+        const articleList = document.getElementById("articleList");
+
+        articleList.innerHTML = articles.map(article => `
+            <tr>
+                <td>
+                    <a href="/read-article/${article.id}">
+                        <strong>${article.title}</strong>
+                    </a>
+                </td>
+                <td style="text-align: center;">${article.authorName}</td>
+                <td style="text-align: center;">${new Date(article.createdAt).toLocaleDateString()}</td>
+            </tr>
+        `).join("");
+
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            localStorage.clear();
+            window.location.href = "/login";
+        });
+    });
+</script>
+</body>
+</html>

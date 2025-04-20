@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>글 읽기</title>
+    <link rel="stylesheet" href="/css/articleReadStyle.css">
+</head>
+<body>
+<div class="container">
+    <h2>글 읽기</h2>
+    <h3 id="title"></h3>
+    <p>작성자: <span id="author"></span></p>
+    <p id="createdAt"></p>
+    <p>내용</p>
+    <p id="content"></p>
+    <button id="editButton">수정</button>
+    <button id="deleteButton">삭제</button>
+    <a href="/board">목록으로</a>
+</div>
+<script src="/js/auth.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", async function() {
+
+    const articleId = window.location.pathname.split("/").pop();
+    const response = await fetchWithAuth(`/api/articles/${articleId}`);
+
+    const article = await response.json();
+
+    document.getElementById("title").textContent = article.title;
+    document.getElementById("content").textContent = article.content;
+    document.getElementById("author").textContent = article.authorName;
+    document.getElementById("createdAt").textContent = article.createdAt;
+
+    document.getElementById("editButton").addEventListener("click", () => {
+        window.location.href = `/edit-article/${article.id}`;
+    });
+
+    document.getElementById("deleteButton").addEventListener("click", async () => {
+        if (confirm("정말 삭제하시겠습니까?")) {
+
+            const response = await fetchWithAuth(`/api/articles/${articleId}`, {
+                method: "DELETE"
+            });
+
+            if (response.ok) {
+                alert("삭제되었습니다.");
+                window.location.href = "/board";
+            } else {
+                alert("삭제 실패! (권한이 없거나 오류 발생)");
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

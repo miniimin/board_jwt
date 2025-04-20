@@ -1,0 +1,83 @@
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 회원가입 컨테이너 */
+.join-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* 제목 스타일 */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 입력 필드 라벨 스타일 */
+label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0 5px;
+}
+
+/* 텍스트 필드 스타일 */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* 버튼 스타일 */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 버튼 hover 효과 */
+button:hover {
+    background-color: #2980b9;
+}
+
+/* 폼 하단 링크 */
+.form-footer {
+    margin-top: 20px;
+}
+
+.form-footer a {
+    text-decoration: none;
+    color: #3498db;
+    font-size: 14px;
+}
+
+/* 링크 hover 효과 */
+.form-footer a:hover {
+    text-decoration: underline;
+}

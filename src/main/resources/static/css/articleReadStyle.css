@@ -1,0 +1,78 @@
+/* 기본적인 body 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 글 읽기 컨테이너 */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 글 제목 스타일 */
+h3 {
+    color: #2c3e50;
+    font-size: 24px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* 작성자 및 작성일 스타일 */
+.info {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+/* 글 내용 스타일 */
+.content {
+    max-width: 1000px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* 버튼 공통 스타일 */
+button, a {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* 삭제 버튼 스타일 */
+#deleteButton {
+    background-color: #e74c3c;
+}
+
+/* 목록으로 버튼 */
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* 수정, 삭제 버튼 호버 */
+button:hover, a:hover {
+    background-color: #2980b9;
+}

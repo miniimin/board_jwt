@@ -1,0 +1,66 @@
+/* 전체 페이지 배경 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 컨테이너 스타일 */
+.container {
+    max-width: 800px; /* 글 목록 페이지와 같은 너비 */
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 폼 스타일 */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 입력 필드 스타일 */
+input, textarea {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    transition: border 0.3s ease;
+}
+
+/* 입력 필드에 포커스 시 스타일 */
+input:focus, textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* 버튼 스타일 */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100px;
+    align-self: center;
+}
+
+/* 버튼 호버 효과 */
+button:hover {
+    background-color: #2980b9;
+}
