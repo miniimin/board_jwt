@@ -23,11 +23,6 @@ public class ViewController {
 
     @GetMapping("/")
     public String home() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            return "redirect:/board";
-        }
-
         return "homePage";
     }
 
